@@ -27,8 +27,9 @@ var name = new Promise (function(resolve, reject){
 })
 
 name.then(function(data){
-
+//NEED TO ADD PROMISE/AWAITS TO WAIT FOR THE AXIOS TO FINISH SO I CAN USE THE VARIABLES IN THE TEMPLATE LITERAL
     const username = data.github;
+    const name = data.name;
     var queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`
 
     axios.get(queryUrl).then(function(res) {
@@ -53,7 +54,7 @@ name.then(function(data){
         starLength = res.data.length
         console.log(starLength)
     });
-
+    //THIS IS SUPPOSED TO CONVERT FROM HTML TO PDF BUT I COULDNT GET IT TO WORK
     // var element = document.getElementById('element-to-print');
     // html2pdf(element);
 
@@ -73,7 +74,7 @@ name.then(function(data){
         <div>
             <div class="card">
                 <img class="pic" src="https://avatars2.githubusercontent.com/u/55290807?s=460&v=4">
-                <h1>My Name is Jeremy Pellow</h1>
+                <h1>My Name is ${name}</h1>
                 <h2>I am Director of IT at Aucnet Digital Procucts USA</h2>
                 <img src="bdgbdgbdgb"><span class="link"><a href="http://www.google.com">Location</a></span>
                 <img src="bdgbdgbdgb"><span class="link"><a href="http://github.com/${username}">GitHub</a></span>
